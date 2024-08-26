@@ -11,7 +11,7 @@ import java.util.Properties;
 
 public class Util {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/1_1_4";
+    private static final String URL = "jdbc:mysql://localhost:3306/pp";
     private static final String USER = "root";
     private static final String PASS = "root";
     private static SessionFactory sessionFactory;
@@ -28,7 +28,8 @@ public class Util {
                 settings.put(Environment.DIALECT, org.hibernate.dialect.MySQLDialect.class.getName());
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
-                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+                ServiceRegistry serviceRegistry =
+                        new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Exception e) {
